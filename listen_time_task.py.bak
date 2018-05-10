@@ -11,7 +11,7 @@ from app.database_config import *
 def init_task_dir(taskId):
     task_dir = 'app/static/interface_auto/test_src/' + str(taskId)
     if os.path.exists(task_dir):
-        print('test')
+        print 'test'
         delList = []
         delDir = task_dir
         delList = os.listdir(delDir)
@@ -45,7 +45,7 @@ def doSth(taskId):
     time.sleep(60)
 
 def main():
-    print('listen run start')
+    print 'listen run start'
     while True:
         while True:
             # 入库
@@ -72,7 +72,7 @@ def main():
                 start_time = obj[8]
                 task_data.append([taskId,start_time])
             logtime = time.strftime('%H:%M', time.localtime(time.time()))
-            print(task_data,logtime)
+            print task_data,logtime
             for item in task_data:
                 if item[1] == str(logtime):
                     doSth(item[0])

@@ -21,8 +21,8 @@ def cors_response(res):
     return response
 
 def LongToInt(value):
-    assert isinstance(value, int)
-    return int(value & sys.maxsize)
+    assert isinstance(value, (int, long))
+    return int(value & sys.maxint)
 
 @app.route('/gettasklist', methods=['GET', 'POST'])
 def get_task_list():
@@ -163,7 +163,7 @@ def upload():
                 allData = []
                 count = 1
                 for k in soup.find_all('a'):
-                    value = k.text.replace('\xa0', '$')
+                    value = k.text.replace(u'\xa0', u'$')
                     allData.append([count, value])
                     count += 1
                 sz = []
@@ -182,7 +182,7 @@ def upload():
                             try:
                                 allData[i].append(allData[i - 1][2])
                             except:
-                                print(allData[i - 1])
+                                print allData[i - 1]
                         elif now_index - prew_index < 0:
                             for l in range(0, len(sz)):
                                 # 找新数组
@@ -196,7 +196,7 @@ def upload():
                         sql = 'insert into case_list (id,title,pid,user_id,status,project_id) VALUES (%s,%s,%s,%s,%s,%s)'
                         dbc.execute(sql, (data[0],data[1].replace('$',''),data[2],userID,0,projectID))
                     except:
-                        print((data[0]))
+                        print (data[0])
                 db.commit()
                 dbc.close()
                 db.close()
@@ -240,7 +240,7 @@ def settaskstatus():
     list = dbc.fetchone()
     pid = list[2]
     project_id = list[6]
-    if status == '2':
+    if status == u'2':
         def updateFather(id):
             fasql = 'update case_list set status = 2 where id = %s and project_id = %s'
             dbc.execute(fasql,(id,project_id))
@@ -252,7 +252,7 @@ def settaskstatus():
                 if se_list[2] != 0:
                     updateFather(se_list[2])
         updateFather(pid)
-    if status == '1':
+    if status == u'1':
         def updateFather(id):
             son_fail_sql = 'select * from case_list where pid = %s and project_id = %s  and status = 2'
             dbc.execute(son_fail_sql, (id,project_id))

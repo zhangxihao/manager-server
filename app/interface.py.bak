@@ -6,7 +6,7 @@ from flask import render_template, flash, redirect, jsonify, Response
 from app import app
 from threading import Thread
 from flask import request
-from .database_config import *
+from database_config import *
 
 # 狗跨域
 def cors_response(res):

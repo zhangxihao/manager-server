@@ -5,7 +5,7 @@ from flask import render_template, flash, redirect,jsonify,Response
 from app import app
 import json
 from flask import request
-from .database_config import *
+from database_config import *
 
 #狗日的跨域
 def cors_response(res):
@@ -18,7 +18,7 @@ def cors_response(res):
 @app.route('/addProd', methods=['GET', 'POST'])
 def addProd():
     # 获取上传参数
-    print('here------------------')
+    print 'here------------------'
     titleContent = request.values.get("titleContent")
     titleImage = request.values.get("titleImage")
     price = request.values.get("price")
@@ -27,7 +27,7 @@ def addProd():
     imageUrls = request.values.get("imageUrls")
     userId = request.values.get("userId")
     
-    print((titleContent,price,condition,description,titleImage,imageUrls,userId))
+    print (titleContent,price,condition,description,titleImage,imageUrls,userId)
 
     # 入库
     db = MySQLdb.connect(database_host,database_username,database_password,database1)
@@ -119,7 +119,7 @@ def get_prod_list():
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
-    if prodName == '':
+    if prodName == u'':
         sql = 'select * from prod where state = 1 order by create_time desc'
         dbc.execute(sql)
     else:

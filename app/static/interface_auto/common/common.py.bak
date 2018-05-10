@@ -111,7 +111,7 @@ def loadFilePath(fileName):
         if os.path.exists(cookiefile):
             return cookiefile
         else:
-            print(("Error: has not file ,please check it on "+cookiefile))
+            print ("Error: has not file ,please check it on "+cookiefile)
             return None
 #返回json
 def loadFileData(fileName):
@@ -180,9 +180,9 @@ def logInfo(str):
     #lineNumber = sys._getframe().f_back.f_lineno  # 获取行号
     logtime =  time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
     try:
-        print(logtime, json.dumps(str).decode('unicode-escape'))
+        print logtime, json.dumps(str).decode('unicode-escape')
     except:
-        print(logtime,str)
+        print logtime,str
 
 # 发送邮件
 def Send_Mail(Message, path):
@@ -201,7 +201,7 @@ def Send_Mail(Message, path):
     msgto = ['xxx@xxx.com']  # 收件人地址多个联系人，格式['aa@163.com'; 'bb@163.com']
     msgfrom = 'xxx@xxx.com'  # 寄信人地址 ,
     msg['subject'] = CURRENTDAY + '接口自动化测试报告'  # 主题
-    msg['From'] = 'xxxx <%s>'%msgfrom # 主题
+    msg['From'] = u'xxxx <%s>'%msgfrom # 主题
     msg['date'] = time.ctime()  # 时间
     # msg['Cc']='bb@junbao.net' #抄送人地址 多个地址不起作用
 
@@ -213,6 +213,6 @@ def Send_Mail(Message, path):
         smtp.login(mailuser, mailpwd)  # 登录
         smtp.sendmail(msgfrom, msgto, msg.as_string())  # 发送
         smtp.close()
-        print("success mail")
-    except Exception as e:
-        print(e)
+        print "success mail"
+    except Exception, e:
+        print e

@@ -3,7 +3,7 @@ from app import app
 import MySQLdb
 from flask import request, jsonify
 from flask import make_response
-from .database_config import *
+from database_config import *
 
 @app.route('/')
 @app.route('/index')
@@ -13,7 +13,7 @@ def index():
 
 """
 打开json文件
-file_path = 'C:\\Users\\xxxx\Desktop\qq\json\\nearby.json'
+file_path = 'C:\Users\\xxxx\Desktop\qq\json\\nearby.json'
     with open(file_path) as json_file:
         data = json.load(json_file)
         user_data =  data["nearbyDataList"]
@@ -83,8 +83,8 @@ import sys
 
 
 def LongToInt(value):
-    assert isinstance(value, int)
-    return int(value & sys.maxsize)
+    assert isinstance(value, (int, long))
+    return int(value & sys.maxint)
 
 
 @app.route('/getlist', methods=['GET', 'POST'])
@@ -672,7 +672,7 @@ def signin():
         try:
             dbc.execute('SELECT `username` FROM users WHERE username = %s', (username,))
             if not dbc.fetchone():
-                raise loginError('错误的用户名或者密码!')
+                raise loginError(u'错误的用户名或者密码!')
             dbc.execute('SELECT `id`,`salt`,`hash_password` FROM users WHERE username = %s', (username,))
             id,salt, hash_password = dbc.fetchone()
             if encrypt_password(password, salt)[0] == hash_password:
