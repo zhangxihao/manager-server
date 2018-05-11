@@ -1,6 +1,7 @@
 # -*-coding:utf-8-*-
 from app import app
-import MySQLdb
+# import MySQLdb
+import pymysql
 from flask import request, jsonify
 from flask import make_response
 from .database_config import *
@@ -42,7 +43,8 @@ def add():
         mianPid = 0
 
     # 入库
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')
@@ -95,7 +97,8 @@ def get_list():
         userID = 0
 
     # 连接
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')
@@ -179,7 +182,8 @@ def get_done_list():
         userID = 0
 
     # 连接
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')
@@ -263,7 +267,8 @@ def get_share_list():
         mainID = 0
 
     # 连接
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')
@@ -353,7 +358,8 @@ def delete():
         return response
 
     # 入库
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')
@@ -390,7 +396,8 @@ def done():
         return response
 
     # 入库
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')
@@ -436,7 +443,7 @@ def donetest():
         return response
 
     # 入库
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')
@@ -482,7 +489,7 @@ def donemain():
         return response
 
     # 入库
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')
@@ -518,7 +525,7 @@ def donemainfalse():
         return response
 
     # 入库
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')
@@ -563,7 +570,7 @@ def update():
         userID = 0
 
     # 入库
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')
@@ -622,7 +629,7 @@ def register():
         email = request.values.get("email")
 
         # 入库
-        db = MySQLdb.connect(database_host,database_username,database_password,database1)
+        db = pymysql.connect(database_host,database_username,database_password,database1)
         dbc = db.cursor()
         # 编码问题
         db.set_character_set('utf8')
@@ -661,7 +668,7 @@ def signin():
         password = request.values.get("password")
 
         # 入库
-        db = MySQLdb.connect(database_host,database_username,database_password,database1)
+        db = pymysql.connect(database_host,database_username,database_password,database1)
         dbc = db.cursor()
         # 编码问题
         db.set_character_set('utf8')

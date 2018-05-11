@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
-import MySQLdb
+# import MySQLdb
+import pymysql
 from flask import make_response
 from flask import render_template, flash, redirect,jsonify,Response
 from app import app
@@ -30,7 +31,8 @@ def addProd():
     print((titleContent,price,condition,description,titleImage,imageUrls,userId))
 
     # 入库
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')
@@ -78,7 +80,8 @@ def get_my_prod_list():
 
     userID = request.values.get("userID")
     # 连接
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')
@@ -112,7 +115,8 @@ def get_my_prod_list():
 def get_prod_list():
     prodName = request.values.get("prodName")
     # 连接
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')
@@ -152,7 +156,8 @@ def get_prod_list():
 def get_prod_detail():
     prodId = request.values.get("prodId")
     # 连接
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')

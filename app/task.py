@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
-import MySQLdb
+# import MySQLdb
+import pymysql
 import os
 import time
 
@@ -32,7 +33,7 @@ def get_task_list():
         userID = 0
 
     # 连接
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')
@@ -96,7 +97,7 @@ def addcase():
     entry = request.values.get("entry")
     title = request.values.get("newCase")
     # 连接
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')
@@ -144,7 +145,7 @@ def upload():
     if upload_file:
         if allowed_file(upload_file.filename):
             # 连接
-            db = MySQLdb.connect(database_host,database_username,database_password,database1)
+            db = pymysql.connect(database_host,database_username,database_password,database1)
             dbc = db.cursor()
             # 编码问题
             db.set_character_set('utf8')
@@ -225,7 +226,7 @@ def settaskstatus():
         return response
 
     # 入库
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')
@@ -296,7 +297,7 @@ def settaskstatus():
 def deletecase():
     entry = request.values.get("entry")
     # 入库
-    db = MySQLdb.connect(database_host,database_username,database_password,database1)
+    db = pymysql.connect(database_host,database_username,database_password,database1)
     dbc = db.cursor()
     # 编码问题
     db.set_character_set('utf8')

@@ -1,5 +1,5 @@
 #-*-coding:utf-8-*-
-import os,sys,time,MySQLdb
+import os,sys,time,pymysql
 import datetime,os
 import time
 import shutil
@@ -50,7 +50,7 @@ def main():
         while True:
             # 入库
             try:
-                db = MySQLdb.connect(database_host,database_username,database_password,database1)
+                db = pymysql.connect(database_host,database_username,database_password,database1)
                 dbc = db.cursor()
                 # 编码问题
                 db.set_character_set('utf8')
