@@ -5,6 +5,7 @@ import pymysql
 from flask import request, jsonify
 from flask import make_response
 from .database_config import *
+from connct_db import connect
 
 @app.route('/')
 @app.route('/index')
@@ -44,10 +45,10 @@ def add():
 
     # 入库
     # db = pymysql.connect(database_host,database_username,database_password,database1)
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -98,10 +99,10 @@ def get_list():
 
     # 连接
     # db = pymysql.connect(database_host,database_username,database_password,database1)
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -183,10 +184,10 @@ def get_done_list():
 
     # 连接
     # db = pymysql.connect(database_host,database_username,database_password,database1)
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -268,10 +269,10 @@ def get_share_list():
 
     # 连接
     # db = pymysql.connect(database_host,database_username,database_password,database1)
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -359,10 +360,10 @@ def delete():
 
     # 入库
     # db = pymysql.connect(database_host,database_username,database_password,database1)
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -397,10 +398,10 @@ def done():
 
     # 入库
     # db = pymysql.connect(database_host,database_username,database_password,database1)
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -443,10 +444,11 @@ def donetest():
         return response
 
     # 入库
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -489,10 +491,11 @@ def donemain():
         return response
 
     # 入库
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -525,10 +528,11 @@ def donemainfalse():
         return response
 
     # 入库
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -570,10 +574,11 @@ def update():
         userID = 0
 
     # 入库
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -629,10 +634,11 @@ def register():
         email = request.values.get("email")
 
         # 入库
-        db = pymysql.connect(database_host,database_username,database_password,database1)
+        # db = pymysql.connect(database_host,database_username,database_password,database1)
+        db = connect('manager_db')
         dbc = db.cursor()
         # 编码问题
-        db.set_character_set('utf8')
+        # db.set_character_set('utf8')
         dbc.execute('SET NAMES utf8;')
         dbc.execute('SET CHARACTER SET utf8;')
         dbc.execute('SET character_set_connection=utf8;')
@@ -668,10 +674,11 @@ def signin():
         password = request.values.get("password")
 
         # 入库
-        db = pymysql.connect(database_host,database_username,database_password,database1)
+        # db = pymysql.connect(database_host,database_username,database_password,database1)
+        db = connect('manager_db')
         dbc = db.cursor()
         # 编码问题
-        db.set_character_set('utf8')
+        # db.set_character_set('utf8')
         dbc.execute('SET NAMES utf8;')
         dbc.execute('SET CHARACTER SET utf8;')
         dbc.execute('SET character_set_connection=utf8;')

@@ -6,6 +6,7 @@ import shutil
 from app.static.interface_auto.common import HttpUntil
 from app.static.interface_auto.common import common
 from app.database_config import *
+from connct_db import connect
 
 #删除原有文件夹
 def init_task_dir(taskId):
@@ -43,17 +44,52 @@ def doSth(taskId):
     else:
         common.logInfo('can not connect to the server , please check if it has been runned')
     time.sleep(60)
-
+#
+# def main():
+#     print('listen run start')
+#     while True:
+#         while True:
+#             # 入库
+#             try:
+#                 db = pymysql.connect(database_host,database_username,database_password,database1)
+#                 dbc = db.cursor()
+#                 # 编码问题
+#                 db.set_character_set('utf8')
+#                 dbc.execute('SET NAMES utf8;')
+#                 dbc.execute('SET CHARACTER SET utf8;')
+#                 dbc.execute('SET character_set_connection=utf8;')
+#                 sql = 'select * from interface_task_list where is_settime_task = 1 and settime_task_status = 1'
+#                 dbc.execute(sql)
+#                 list = dbc.fetchall()
+#                 dbc.close()
+#                 db.close()
+#             except:
+#                 common.logInfo("lost mysql connect!")
+#                 time.sleep(60)
+#                 continue
+#             task_data= []
+#             for obj in list:
+#                 taskId = obj[0]
+#                 start_time = obj[8]
+#                 task_data.append([taskId,start_time])
+#             logtime = time.strftime('%H:%M', time.localtime(time.time()))
+#             print(task_data,logtime)
+#             for item in task_data:
+#                 if item[1] == str(logtime):
+#                     doSth(item[0])
+#                     break
+#             time.sleep(60)
+#
 def main():
     print('listen run start')
     while True:
         while True:
             # 入库
             try:
-                db = pymysql.connect(database_host,database_username,database_password,database1)
+                db = connect('manager_db')
                 dbc = db.cursor()
                 # 编码问题
-                db.set_character_set('utf8')
+                # db.set_character_set('utf8')
                 dbc.execute('SET NAMES utf8;')
                 dbc.execute('SET CHARACTER SET utf8;')
                 dbc.execute('SET character_set_connection=utf8;')
@@ -61,10 +97,10 @@ def main():
                 dbc.execute(sql)
                 list = dbc.fetchall()
                 dbc.close()
-                db.close()
+                # db.close()
             except:
                 common.logInfo("lost mysql connect!")
-                time.sleep(60)
+                time.sleep(10)
                 continue
             task_data= []
             for obj in list:
@@ -77,7 +113,6 @@ def main():
                 if item[1] == str(logtime):
                     doSth(item[0])
                     break
-            time.sleep(60)
-
+            time.sleep(10)
 
 start_listen = main()

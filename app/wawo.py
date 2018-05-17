@@ -6,7 +6,8 @@ from flask import render_template, flash, redirect,jsonify,Response
 from app import app
 import json
 from flask import request
-from .database_config import *
+# from .database_config import *
+from connct_db import connect
 
 #狗日的跨域
 def cors_response(res):
@@ -32,10 +33,11 @@ def addProd():
 
     # 入库
     # db = pymysql.connect(database_host,database_username,database_password,database1)
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -81,10 +83,10 @@ def get_my_prod_list():
     userID = request.values.get("userID")
     # 连接
     # db = pymysql.connect(database_host,database_username,database_password,database1)
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -116,10 +118,10 @@ def get_prod_list():
     prodName = request.values.get("prodName")
     # 连接
     # db = pymysql.connect(database_host,database_username,database_password,database1)
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -157,10 +159,10 @@ def get_prod_detail():
     prodId = request.values.get("prodId")
     # 连接
     # db = pymysql.connect(database_host,database_username,database_password,database1)
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')

@@ -11,7 +11,8 @@ from app import app
 from threading import Thread
 from flask import request
 from bs4 import BeautifulSoup
-from app.database_config import *
+# from app.database_config import *
+from connct_db import connect
 
 # 狗跨域
 def cors_response(res):
@@ -33,10 +34,11 @@ def get_task_list():
         userID = 0
 
     # 连接
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -97,10 +99,11 @@ def addcase():
     entry = request.values.get("entry")
     title = request.values.get("newCase")
     # 连接
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -145,10 +148,11 @@ def upload():
     if upload_file:
         if allowed_file(upload_file.filename):
             # 连接
-            db = pymysql.connect(database_host,database_username,database_password,database1)
+            # db = pymysql.connect(database_host,database_username,database_password,database1)
+            db = connect('manager_db')
             dbc = db.cursor()
             # 编码问题
-            db.set_character_set('utf8')
+            # db.set_character_set('utf8')
             dbc.execute('SET NAMES utf8;')
             dbc.execute('SET CHARACTER SET utf8;')
             dbc.execute('SET character_set_connection=utf8;')
@@ -226,10 +230,11 @@ def settaskstatus():
         return response
 
     # 入库
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -297,10 +302,11 @@ def settaskstatus():
 def deletecase():
     entry = request.values.get("entry")
     # 入库
-    db = pymysql.connect(database_host,database_username,database_password,database1)
+    # db = pymysql.connect(database_host,database_username,database_password,database1)
+    db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    db.set_character_set('utf8')
+    # db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
