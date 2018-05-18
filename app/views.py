@@ -48,7 +48,7 @@ def add():
     db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    # db.set_character_set('utf8')
+    db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -102,7 +102,7 @@ def get_list():
     db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    # db.set_character_set('utf8')
+    db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -187,7 +187,7 @@ def get_done_list():
     db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    # db.set_character_set('utf8')
+    db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -272,7 +272,7 @@ def get_share_list():
     db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    # db.set_character_set('utf8')
+    db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -363,7 +363,7 @@ def delete():
     db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    # db.set_character_set('utf8')
+    db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -401,7 +401,7 @@ def done():
     db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    # db.set_character_set('utf8')
+    db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -448,7 +448,7 @@ def donetest():
     db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    # db.set_character_set('utf8')
+    db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -495,7 +495,7 @@ def donemain():
     db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    # db.set_character_set('utf8')
+    db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -532,7 +532,7 @@ def donemainfalse():
     db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    # db.set_character_set('utf8')
+    db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -578,7 +578,7 @@ def update():
     db = connect('manager_db')
     dbc = db.cursor()
     # 编码问题
-    # db.set_character_set('utf8')
+    db.set_character_set('utf8')
     dbc.execute('SET NAMES utf8;')
     dbc.execute('SET CHARACTER SET utf8;')
     dbc.execute('SET character_set_connection=utf8;')
@@ -638,7 +638,7 @@ def register():
         db = connect('manager_db')
         dbc = db.cursor()
         # 编码问题
-        # db.set_character_set('utf8')
+        db.set_character_set('utf8')
         dbc.execute('SET NAMES utf8;')
         dbc.execute('SET CHARACTER SET utf8;')
         dbc.execute('SET character_set_connection=utf8;')
@@ -678,7 +678,7 @@ def signin():
         db = connect('manager_db')
         dbc = db.cursor()
         # 编码问题
-        # db.set_character_set('utf8')
+        db.set_character_set('utf8')
         dbc.execute('SET NAMES utf8;')
         dbc.execute('SET CHARACTER SET utf8;')
         dbc.execute('SET character_set_connection=utf8;')
