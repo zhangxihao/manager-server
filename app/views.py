@@ -615,7 +615,8 @@ import hashlib
 
 def encrypt_password(password, salt=None, encryptlop=30):
     if not salt:
-        salt = os.urandom(16).encode('hex')  # length 32
+        # salt = os.urandom(16).encode('hex')  # length 32
+        salt = os.urandom(16).decode('hex')
     for i in range(encryptlop):
         password = hashlib.sha256(password + salt).hexdigest()  # length 64
     return password, salt
